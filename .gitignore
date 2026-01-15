@@ -2,7 +2,7 @@
 .hbuilderx/
 
 # 忽略help文件夹及其内部所有文件
-help/
+# help/
 
 # 忽略编译输出目录
 unpackage/
