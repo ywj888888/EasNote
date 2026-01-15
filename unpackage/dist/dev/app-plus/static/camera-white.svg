@@ -1,0 +1,14 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 相机机身 -->
+  <rect x="4" y="8" width="46" height="36" rx="8" stroke="#fff" stroke-width="4"/>
+  <!-- 镜头外圈（偏左+缩小版） -->
+  <circle cx="24" cy="26" r="10" stroke="#fff" stroke-width="4"/>
+  <!-- 镜头内圈（描边圆圈） -->
+  <circle cx="24" cy="26" r="5" stroke="#fff" stroke-width="4"/>
+  <!-- 镜头高光 -->
+  <circle cx="22" cy="28" r="1.2" fill="white"/>
+  <!-- 顶部快门按钮（高度调整为2，位置微调至居中） -->
+  <rect x="27" y="2" width="16" height="3" rx="2" fill="#fff"/>
+  <!-- 右上红色闪光灯（无白点） -->
+  <circle cx="42" cy="20" r="2.5" fill="#FF3B30"/>
+</svg>

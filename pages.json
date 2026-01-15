@@ -1,0 +1,56 @@
+{"pages": [ //The first item in the pages array is the app's launch page, reference: https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/welcome/welcome",
+			"style": {
+				"navigationBarTitleText": "EasNote",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "My Notes",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/note-edit/note-edit",
+			"style": {
+				"navigationBarTitleText": "Edit Note"
+			}
+		},
+		{
+			"path": "pages/permission/permission",
+			"style": {
+				"navigationBarTitleText": "Permissions",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/privacy/privacy",
+			"style": {
+				"navigationBarTitleText": "Privacy Policy"
+			}
+		},
+		{
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "About"
+			}
+		},
+		{
+			"path": "pages/recycle-bin/recycle-bin",
+			"style": {
+				"navigationBarTitleText": "Recycle Bin"
+			}
+		}
+	],
+	"globalStyle": {
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "EasNote",
+			"navigationBarBackgroundColor": "#66aa66",
+			"backgroundColor": "#66aa66",
+			"navigationBarTextStyle": "white"
+		},
+	"uniIdRouter": {}
+}

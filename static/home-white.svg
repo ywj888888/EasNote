@@ -1,0 +1,8 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 缩放原24x24图标至60x60（缩放比例2.5），保持比例不变 -->
+
+  <g transform="scale(2.5)">
+    <path d="M20 20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20ZM9 9.99998V16H15V9.99998H9ZM11 12H13V14H11V12Z"
+          stroke="#fff" stroke-width="2"  fill="none"/>
+  </g>  
+</svg>

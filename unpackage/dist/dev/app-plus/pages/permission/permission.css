@@ -1,0 +1,111 @@
+
+.container {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.permission-content {
+    background-color: white;
+    border-radius: 0.375rem;
+    padding: 0.9375rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+}
+.permission-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+.header-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 0.3125rem;
+}
+.header-subtitle {
+    font-size: 0.875rem;
+    color: #666;
+}
+.permission-item {
+    padding: 1.25rem;
+    margin-bottom: 0.625rem;
+    border-radius: 0.625rem;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    box-sizing: border-box;
+}
+.permission-item:last-child {
+    margin-bottom: 0;
+}
+.permission-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.icon-img {
+    width: 1.875rem;
+    height: 1.875rem;
+}
+.permission-info {
+    flex: 1;
+}
+.permission-title {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3125rem;
+}
+.permission-desc {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.375rem;
+}
+.continue-btn-container {
+    margin-top: 1.875rem;
+    padding: 0 1.25rem;
+}
+.continue-btn {
+    width: 100%;
+    height: 2.75rem;
+    background: linear-gradient(135deg, #66aa66 0%, #44aa44 100%);
+    color: white;
+    border: none;
+    border-radius: 1.375rem;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.0625rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(34, 136, 34, 0.3);
+    transition: all 0.3s ease;
+}
+.continue-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.125rem 0.5rem rgba(34, 136, 34, 0.2);
+}
+.back-btn {
+    width: 100%;
+    height: 2.75rem;
+    background: linear-gradient(135deg, #66aa66 0%, #44aa44 100%);
+    color: white;
+    border: none;
+    border-radius: 1.375rem;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.0625rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(102, 102, 102, 0.3);
+    transition: all 0.3s ease;
+}
+.back-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.125rem 0.5rem rgba(102, 102, 102, 0.2);
+}

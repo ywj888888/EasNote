@@ -1,0 +1,26 @@
+<svg width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 硬皮封面 -->
+  <rect x="4" y="4" width="72" height="92" rx="2" ry="2" fill="#333A48"/>
+  <!-- 封面纹理 -->
+  <rect x="4" y="4" width="72" height="92" rx="2" ry="2" fill="url(#coverGradient2)" opacity="0.3"/>
+  <!-- 书脊 -->
+  <rect x="4" y="4" width="5" height="92" rx="1" ry="1" fill="#2A303C"/>
+  <!-- 装饰线 -->
+  <line x1="12" y1="23" x2="68" y2="23" stroke="#FFFFFF" stroke-width="1" opacity="0.6"/>
+  <line x1="12" y1="78" x2="68" y2="78" stroke="#FFFFFF" stroke-width="1" opacity="0.6"/>
+  <!-- 内页边缘 -->
+  <rect x="76" y="6" width="2" height="88" rx="0.5" ry="0.5" fill="#E8ECEF"/>
+  <!-- 适配小尺寸的优化图形 -->
+  <path d="M26 38 L54 38 L54 62 L26 62 Z" stroke="#228822" stroke-width="1.5" fill="none" rx="2" ry="2"/>
+  <line x1="26" y1="46" x2="54" y2="46" stroke="#228822" stroke-width="1" opacity="0.8"/>
+  <line x1="26" y1="54" x2="45" y2="54" stroke="#228822" stroke-width="1" opacity="0.8"/>
+  <circle cx="60" cy="48" r="4.5" stroke="#228822" stroke-width="1.5" fill="none"/>
+  <path d="M57.5 45 L60 48 L62.5 45" stroke="#228822" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="coverGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

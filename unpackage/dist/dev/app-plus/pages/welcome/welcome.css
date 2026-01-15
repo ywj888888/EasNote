@@ -1,0 +1,119 @@
+
+.welcome-container[data-v-085f0530] {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #eeeeee 0%, #44aa44 100%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1.25rem;
+	color: white;
+}
+.content-section[data-v-085f0530] {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 3.125rem;
+}
+.app-logo[data-v-085f0530] {
+	width: 6.25rem;
+	height: 6.25rem;
+	margin-bottom: 1.25rem;
+	border-radius: 0.625rem;
+	box-shadow: 0 0.46875rem 1.25rem rgba(0, 0, 0, 0.3);
+	animation: logoFloat-085f0530 3s ease-in-out infinite;
+}
+.app-name[data-v-085f0530] {
+	font-size: 1.625rem;
+	font-weight: bold;
+	letter-spacing: 0.09375rem;
+	margin-bottom: 0.625rem;
+	text-shadow: 0 0.15625rem 0.46875rem rgba(0, 0, 0, 0.3);
+	animation: nameGlow-085f0530 2s ease-in-out infinite alternate;
+}
+.version-info[data-v-085f0530] {
+	font-size: 0.875rem;
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: 300;
+	letter-spacing: 0.03125rem;
+}
+.loading-section[data-v-085f0530] {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: fadeIn-085f0530 1s ease-out;
+}
+
+/* Jumping Dots Animation Styles */
+.dot-container[data-v-085f0530] {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 1.25rem;
+}
+.dot[data-v-085f0530] {
+	width: 0.5rem;
+	height: 0.5rem;
+	background-color: white;
+	border-radius: 50%;
+	margin: 0 0.25rem;
+	box-shadow: 0 0.125rem 0.375rem rgba(255, 255, 255, 0.4);
+}
+
+/* Set different animation delays for each dot to create a wave effect */
+.dot1[data-v-085f0530] {
+	animation: jump-085f0530 1.4s infinite ease-in-out;
+}
+.dot2[data-v-085f0530] {
+	animation: jump-085f0530 1.4s infinite ease-in-out 0.2s;
+}
+.dot3[data-v-085f0530] {
+	animation: jump-085f0530 1.4s infinite ease-in-out 0.4s;
+}
+.loading-text[data-v-085f0530] {
+	font-size: 0.875rem;
+	color: rgba(255, 255, 255, 0.9);
+	font-weight: 300;
+}
+
+/* Animation Definitions */
+@keyframes logoFloat-085f0530 {
+0%, 100% {
+		transform: translateY(0);
+}
+50% {
+		transform: translateY(-0.3125rem);
+}
+}
+@keyframes nameGlow-085f0530 {
+from {
+		text-shadow: 0 0.15625rem 0.46875rem rgba(0, 0, 0, 0.3);
+}
+to {
+		text-shadow: 0 0.15625rem 0.78125rem rgba(255, 255, 255, 0.3);
+}
+}
+@keyframes fadeIn-085f0530 {
+from {
+		opacity: 0;
+		transform: translateY(0.625rem);
+}
+to {
+		opacity: 1;
+		transform: translateY(0);
+}
+}
+
+/* Jumping Dots Animation Keyframes */
+@keyframes jump-085f0530 {
+0%, 80%, 100% { 
+		transform: translateY(0) scale(1); 
+		opacity: 0.3; 
+		box-shadow: 0 0.0625rem 0.25rem rgba(255, 255, 255, 0.2);
+}
+40% { 
+		transform: translateY(-0.78125rem) scale(1.3); 
+		opacity: 1; 
+		box-shadow: 0 0.1875rem 0.625rem rgba(255, 255, 255, 0.6);
+}
+}

@@ -1,0 +1,61 @@
+# 忽略HBuilderX配置文件
+.hbuilderx/
+
+# 忽略help文件夹及其内部所有文件
+help/
+
+# 忽略编译输出目录
+unpackage/
+
+# 忽略node_modules目录
+node_modules/
+
+# 忽略日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 忽略环境配置文件
+.env
+.env.local
+.env.*.local
+
+# 忽略编辑器配置文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 忽略操作系统文件
+.DS_Store
+Thumbs.db
+
+# 忽略临时文件
+*.tmp
+*.temp
+.temp/
+
+# 忽略构建相关文件
+dist/
+build/
+
+# 忽略证书和签名文件
+keys/
+*.keystore
+*.jks
+*.p8
+*.p12
+
+# 忽略本地配置文件
+local.properties
+
+# 忽略测试覆盖率文件
+coverage/
+.nyc_output/
+
+# 忽略依赖锁文件（可选，根据团队规范）
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
