@@ -54,9 +54,15 @@
         permissionsLoaded: false // Whether permission check is completed
       }
     },
-    onLoad() {
-      // Check if it's the first launch synchronously to avoid rendering flickering
-      this.isFirstLaunch = !uni.getStorageSync('hasLaunched');
+    onLoad(options) {
+      // Check if it's the first launch using route parameter first
+      if (options.isFirstLaunch !== undefined) {
+        // Use the route parameter value (convert string to boolean)
+        this.isFirstLaunch = options.isFirstLaunch === 'true';
+      } else {
+        // Fallback to storage check if no parameter
+        this.isFirstLaunch = !uni.getStorageSync('hasLaunched');
+      }
       
       // Use setTimeout to delay permission check to avoid affecting page loading
       setTimeout(() => {

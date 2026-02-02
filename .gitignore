@@ -1,8 +1,11 @@
 # 忽略HBuilderX配置文件
 .hbuilderx/
 
-# 忽略help文件夹及其内部所有文件
-help/
+# 忽略help文件夹中的特定内容，保留release-files等
+# help/keys-info/
+# help/logo-pic/
+# help/screen-shot/
+# help/read.md 保持跟踪
 
 # 忽略编译输出目录
 unpackage/

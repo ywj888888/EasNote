@@ -64,12 +64,12 @@ export default {
 			const isFirstLaunch = !uni.getStorageSync('hasLaunched');
 			
 			if (isFirstLaunch) {
-				// First launch, navigate to permission management page
+				// First launch, navigate to permission management page with parameter
 				uni.navigateTo({
-					url: '/pages/permission/permission'
+					url: `/pages/permission/permission?isFirstLaunch=${isFirstLaunch}`
 				});
-				// Mark as launched
-				uni.setStorageSync('hasLaunched', true);
+				// Remove the premature storage setting
+				// uni.setStorageSync('hasLaunched', true);
 			} else {
 				// Non-first launch, directly navigate to homepage
 				uni.navigateTo({

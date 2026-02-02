@@ -1,0 +1,8 @@
+生成的签名文件信息： 
+文件路径：keys/easnote.keystore 
+别名：easnote 密钥算法：RSA 
+密钥大小：2048位 
+有效期：9125天（约25年） 
+密钥库密码：easnote123 
+密钥密码：easnote123 
+文件大小：2746字节

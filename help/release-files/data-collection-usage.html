@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轻笔记应用数据收集与使用说明</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3em;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>轻笔记应用数据收集与使用说明</h1>
+
+        <h2>1. 数据收集概述</h2>
+        <p>轻笔记应用遵循"最小化收集"原则，仅收集用户明确提供且必要的数据，不进行任何不必要的数据收集。</p>
+
+        <h3>1.1 主动提供的数据</h3>
+        <table>
+            <tr>
+                <th>数据类型</th>
+                <th>收集方式</th>
+                <th>存储方式</th>
+                <th>用途</th>
+            </tr>
+            <tr>
+                <td>笔记内容</td>
+                <td>用户输入</td>
+                <td>本地加密存储</td>
+                <td>用于展示和编辑笔记</td>
+            </tr>
+            <tr>
+                <td>笔记图片</td>
+                <td>用户从相册导入</td>
+                <td>本地文件系统存储</td>
+                <td>用于笔记中的图片展示</td>
+            </tr>
+            <tr>
+                <td>操作记录</td>
+                <td>用户创建、编辑、删除笔记</td>
+                <td>本地加密存储</td>
+                <td>用于维护笔记的创建时间、更新时间和状态</td>
+            </tr>
+        </table>
+
+        <h3>1.2 自动收集的数据</h3>
+        <p>轻笔记应用<strong>不自动收集</strong>任何用户数据，包括但不限于：</p>
+        <ul>
+            <li>位置信息</li>
+            <li>设备标识符</li>
+            <li>网络活动</li>
+            <li>使用习惯</li>
+            <li>崩溃日志</li>
+        </ul>
+
+        <h2>2. 数据存储与安全</h2>
+
+        <h3>2.1 存储方式</h3>
+        <ul>
+            <li><strong>数据存储位置</strong>：所有用户数据均存储在设备本地，不上传至任何服务器</li>
+            <li><strong>存储形式</strong>：
+                <ul>
+                    <li>文本数据：使用JSON格式+XOR加密算法+Base64编码存储</li>
+                    <li>图片数据：原始图片文件存储在设备本地文件系统</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.2 加密机制</h3>
+        <p>为确保用户数据安全，应用采用了以下加密措施：</p>
+        <ol>
+            <li><strong>对称加密算法</strong>：使用XOR位运算结合自定义密钥进行数据加密</li>
+            <li><strong>密钥管理</strong>：加密密钥内置在应用代码中，确保每次加密/解密操作的一致性</li>
+            <li><strong>Base64编码</strong>：加密后的文本通过Base64编码，确保特殊字符正确存储</li>
+            <li><strong>完整覆盖</strong>：所有存储的笔记数据和回收站数据均经过加密处理</li>
+        </ol>
+
+        <h3>2.3 加密实现细节</h3>
+        <pre><code>// 加密函数示例
+function encrypt(text) {
+  let result = '';
+  const SECRET_KEY = 'easynote_secure_key_2023';
+  for (let i = 0; i < text.length; i++) {
+    const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
+    result += String.fromCharCode(charCode);
+  }
+  return btoa(unescape(encodeURIComponent(result)));
+}
+
+// 解密函数示例
+function decrypt(encryptedText) {
+  try {
+    const text = decodeURIComponent(escape(atob(encryptedText)));
+    let result = '';
+    const SECRET_KEY = 'easynote_secure_key_2023';
+    for (let i = 0; i < text.length; i++) {
+      const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
+      result += String.fromCharCode(charCode);
+    }
+    return result;
+  } catch (error) {
+    console.error('解密失败:', error);
+    return '';
+  }
+}</code></pre>
+
+        <h2>3. 数据使用目的</h2>
+        <p>用户提供的数据仅用于以下目的：</p>
+        <ol>
+            <li><strong>笔记功能实现</strong>：存储和展示用户创建的笔记内容</li>
+            <li><strong>用户体验优化</strong>：维护笔记的创建时间、更新时间等元数据</li>
+            <li><strong>数据管理</strong>：支持笔记的编辑、删除、恢复等操作</li>
+        </ol>
+
+        <h2>4. 数据共享与披露</h2>
+        <p>轻笔记应用<strong>不共享或披露</strong>任何用户数据：</p>
+        <ul>
+            <li>不与第三方服务共享数据</li>
+            <li>不向开发者传输数据</li>
+            <li>不用于广告或营销目的</li>
+            <li>不进行数据分析或统计</li>
+        </ul>
+
+        <h2>5. 用户权利</h2>
+        <p>作为应用用户，您拥有以下权利：</p>
+        <ol>
+            <li><strong>完全控制权</strong>：您可以随时查看、编辑、删除或恢复自己的笔记</li>
+            <li><strong>数据删除权</strong>：您可以永久删除任何笔记数据</li>
+            <li><strong>隐私保护</strong>：您的数据永远不会被应用开发者或第三方访问</li>
+            <li><strong>数据迁移</strong>：您可以通过备份设备数据的方式迁移应用数据</li>
+        </ol>
+
+        <h2>6. 数据保留期限</h2>
+        <ul>
+            <li>正常笔记：无限期保留，直到用户主动删除</li>
+            <li>回收站笔记：无限期保留，直到用户主动恢复或永久删除</li>
+            <li>永久删除：数据将被立即从设备中移除</li>
+        </ul>
+
+        <h2>7. 隐私政策更新</h2>
+        <p>本数据收集与使用说明可能会根据应用功能的变化而更新。更新后的说明将在应用内发布，并自发布之日起生效。</p>
+
+        <h2>8. 联系方式</h2>
+        <p>如果您对应用的数据处理有任何疑问或建议，请通过以下方式联系我们：</p>
+        <ul>
+            <li>邮箱：thuy4yr5nuong9vg88f@gmail.com</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>生效日期</strong>：2026年1月5日</p>
+            <p><strong>版本</strong>：1.0</p>
+        </div>
+    </div>
+</body>
+</html>

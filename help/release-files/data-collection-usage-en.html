@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasNote Data Collection and Usage Description</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3em;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EasNote Data Collection and Usage Description</h1>
+
+        <h2>1. Data Collection Overview</h2>
+        <p>EasNote follows the "minimum collection" principle, collecting only data explicitly provided by users that is necessary for functionality, and conducting no unnecessary data collection.</p>
+
+        <h3>1.1 Actively Provided Data</h3>
+        <table>
+            <tr>
+                <th>Data Type</th>
+                <th>Collection Method</th>
+                <th>Storage Method</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Note content</td>
+                <td>User input</td>
+                <td>Local encrypted storage</td>
+                <td>For displaying and editing notes</td>
+            </tr>
+            <tr>
+                <td>Note images</td>
+                <td>User import from gallery</td>
+                <td>Local file system storage</td>
+                <td>For displaying images in notes</td>
+            </tr>
+            <tr>
+                <td>Operation records</td>
+                <td>User create, edit, delete notes</td>
+                <td>Local encrypted storage</td>
+                <td>For maintaining note creation time, update time, and status</td>
+            </tr>
+        </table>
+
+        <h3>1.2 Automatically Collected Data</h3>
+        <p>EasNote <strong>does not automatically collect</strong> any user data, including but not limited to:</p>
+        <ul>
+            <li>Location information</li>
+            <li>Device identifiers</li>
+            <li>Network activity</li>
+            <li>Usage habits</li>
+            <li>Crash logs</li>
+        </ul>
+
+        <h2>2. Data Storage and Security</h2>
+
+        <h3>2.1 Storage Method</h3>
+        <ul>
+            <li><strong>Data Storage Location</strong>: All user data is stored locally on the device and is not uploaded to any server</li>
+            <li><strong>Storage Formats</strong>:
+                <ul>
+                    <li>Text data: Stored using JSON format + XOR encryption algorithm + Base64 encoding</li>
+                    <li>Image data: Original image files stored in the device's local file system</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.2 Encryption Mechanism</h3>
+        <p>To ensure user data security, the application employs the following encryption measures:</p>
+        <ol>
+            <li><strong>Symmetric encryption algorithm</strong>: Uses XOR bitwise operations combined with a custom key for data encryption</li>
+            <li><strong>Key management</strong>: Encryption keys are built into the application code to ensure consistency for each encryption/decryption operation</li>
+            <li><strong>Base64 encoding</strong>: Encrypted text is encoded through Base64 to ensure special characters are stored correctly</li>
+            <li><strong>Complete coverage</strong>: All stored note data and recycle bin data are processed through encryption</li>
+        </ol>
+
+        <h3>2.3 Encryption Implementation Details</h3>
+        <pre><code>// Encryption function example
+function encrypt(text) {
+  let result = '';
+  const SECRET_KEY = 'easynote_secure_key_2023';
+  for (let i = 0; i < text.length; i++) {
+    const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
+    result += String.fromCharCode(charCode);
+  }
+  return btoa(unescape(encodeURIComponent(result)));
+}
+
+// Decryption function example
+function decrypt(encryptedText) {
+  try {
+    const text = decodeURIComponent(escape(atob(encryptedText)));
+    let result = '';
+    const SECRET_KEY = 'easynote_secure_key_2023';
+    for (let i = 0; i < text.length; i++) {
+      const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
+      result += String.fromCharCode(charCode);
+    }
+    return result;
+  } catch (error) {
+    console.error('Decryption failed:', error);
+    return '';
+  }
+}</code></pre>
+
+        <h2>3. Data Usage Purpose</h2>
+        <p>User-provided data is used only for the following purposes:</p>
+        <ol>
+            <li><strong>Note function implementation</strong>: Storing and displaying user-created note content</li>
+            <li><strong>User experience optimization</strong>: Maintaining note creation time, update time, and other metadata</li>
+            <li><strong>Data management</strong>: Supporting note editing, deletion, recovery, and other operations</li>
+        </ol>
+
+        <h2>4. Data Sharing and Disclosure</h2>
+        <p>EasNote <strong>does not share or disclose</strong> any user data:</p>
+        <ul>
+            <li>No data sharing with third-party services</li>
+            <li>No data transmission to developers</li>
+            <li>No use for advertising or marketing purposes</li>
+            <li>No data analysis or statistics</li>
+        </ul>
+
+        <h2>5. User Rights</h2>
+        <p>As an application user, you have the following rights:</p>
+        <ol>
+            <li><strong>Complete control</strong>: You can view, edit, delete, or recover your notes at any time</li>
+            <li><strong>Data deletion right</strong>: You can permanently delete any note data</li>
+            <li><strong>Privacy protection</strong>: Your data will never be accessed by application developers or third parties</li>
+            <li><strong>Data migration</strong>: You can migrate application data by backing up device data</li>
+        </ol>
+
+        <h2>6. Data Retention Period</h2>
+        <ul>
+            <li>Normal notes: Retained indefinitely until actively deleted by the user</li>
+            <li>Recycle bin notes: Retained indefinitely until actively recovered or permanently deleted by the user</li>
+            <li>Permanent deletion: Data will be immediately removed from the device</li>
+        </ul>
+
+        <h2>7. Privacy Policy Updates</h2>
+        <p>This data collection and usage description may be updated based on changes to application functions. Updated descriptions will be published within the application and take effect from the publication date.</p>
+
+        <h2>8. Contact Information</h2>
+        <p>If you have any questions or suggestions about the application's data processing, please contact us through the following methods:</p>
+        <ul>
+            <li>Email: thuy4yr5nuong9vg88f@gmail.com</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>Effective Date</strong>: January 5, 2026</p>
+            <p><strong>Version</strong>: 1.0</p>
+        </div>
+    </div>
+</body>
+</html>

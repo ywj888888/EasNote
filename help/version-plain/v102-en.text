@@ -1,0 +1,19 @@
+Version 1.0.2 (102) Update Notes
+
+1. Version Number Update:
+   - versionName: 1.0.1 → 1.0.2
+   - versionCode: 101 → 102
+
+2. Application Fixes:
+   - No functional code changes
+   - Only updated version number to meet Google Play publishing requirements
+
+3. Permission Configuration:
+   - Retained the configured READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions
+   - Retained the maxSdkVersion="32" setting for WRITE_EXTERNAL_STORAGE permission
+   - Permission configuration complies with Android 13+ requirements
+
+4. Release Notes:
+   - This version is a compliance update
+   - Used for resubmitting to Google Play review
+   - No new features or major changes

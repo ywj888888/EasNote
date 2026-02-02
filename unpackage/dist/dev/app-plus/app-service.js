@@ -76,9 +76,8 @@ if (uni.restoreGlobal) {
         const isFirstLaunch = !uni.getStorageSync("hasLaunched");
         if (isFirstLaunch) {
           uni.navigateTo({
-            url: "/pages/permission/permission"
+            url: `/pages/permission/permission?isFirstLaunch=${isFirstLaunch}`
           });
-          uni.setStorageSync("hasLaunched", true);
         } else {
           uni.navigateTo({
             url: "/pages/index/index"
@@ -1269,8 +1268,12 @@ if (uni.restoreGlobal) {
         // Whether permission check is completed
       };
     },
-    onLoad() {
-      this.isFirstLaunch = !uni.getStorageSync("hasLaunched");
+    onLoad(options) {
+      if (options.isFirstLaunch !== void 0) {
+        this.isFirstLaunch = options.isFirstLaunch === "true";
+      } else {
+        this.isFirstLaunch = !uni.getStorageSync("hasLaunched");
+      }
       setTimeout(() => {
         this.checkAllPermissions();
       }, 100);
@@ -1280,9 +1283,9 @@ if (uni.restoreGlobal) {
       async checkAllPermissions() {
         try {
           const permissions = await checkPermissions();
-          formatAppLog("log", "at pages/permission/permission.vue:71", "Permission check result:", permissions);
+          formatAppLog("log", "at pages/permission/permission.vue:77", "Permission check result:", permissions);
         } catch (error) {
-          formatAppLog("error", "at pages/permission/permission.vue:73", "Failed to check permissions:", error);
+          formatAppLog("error", "at pages/permission/permission.vue:79", "Failed to check permissions:", error);
         }
       },
       // Handle continue button logic (for first launch)

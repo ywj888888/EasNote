@@ -1,0 +1,41 @@
+版本 1.0.2 (102) 更新说明
+
+1. 版本号更新：
+   - versionName: 1.0.1 → 1.0.2
+   - versionCode: 101 → 102
+
+2. 应用修复：
+   - 无功能代码修改
+   - 仅更新版本号以符合Google Play发布要求
+
+3. 权限配置：
+   - 保留已配置的READ_MEDIA_IMAGES和READ_MEDIA_VIDEO权限
+   - 保留WRITE_EXTERNAL_STORAGE权限的maxSdkVersion="32"设置
+   - 权限配置符合Android 13+要求
+
+4. 发布说明：
+   - 此版本为合规性更新
+   - 用于重新提交Google Play审核
+   - 无新功能或重大变更
+
+
+
+Version 1.0.2 (102) Update Notes
+
+1. Version Number Update:
+   - versionName: 1.0.1 → 1.0.2
+   - versionCode: 101 → 102
+
+2. Application Fixes:
+   - No functional code changes
+   - Only updated version number to meet Google Play publishing requirements
+
+3. Permission Configuration:
+   - Retained the configured READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions
+   - Retained the maxSdkVersion="32" setting for WRITE_EXTERNAL_STORAGE permission
+   - Permission configuration complies with Android 13+ requirements
+
+4. Release Notes:
+   - This version is a compliance update
+   - Used for resubmitting to Google Play review
+   - No new features or major changes
